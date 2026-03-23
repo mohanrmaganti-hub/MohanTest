@@ -1,0 +1,23 @@
+# Mapping from ServiceNow fields to SQL Server columns and target table
+servicenow:
+  table: incident
+  fields:
+    - sys_id
+    - number
+    - short_description
+    - incident_state
+    - opened_at
+
+sql:
+  table: dbo.incident
+  upsert_key: sys_id
+  columns:
+    sys_id: sys_id
+    number: number
+    short_description: short_description
+    incident_state: incident_state
+    opened_at: opened_at
+
+fetch:
+  page_size: ${PAGE_SIZE|1000}
+  max_records: 10000
